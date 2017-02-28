@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +20,9 @@
             function async_load() {
                 //var hash = window.location.hash;
                 //$(hash).goTo();
+                //$('.carousel').carousel({
+                //    interval: 2000
+                //})
             }
             if (window.addEventListener) window.addEventListener('DOMContentLoaded', async_load, false);
             else if (window.attachEvent) window.attachEvent('onload', async_load);
@@ -86,12 +90,20 @@
             padding: 0;
         }
 
+            /*#spearker-list .carousel-inner > li:not(.active) img {
+                display: none;
+            }*/
+
         #spearker-list .carousel-control {
             font-size: 90px;
             top: 30px;
             background-color: white;
             background-image: none;
             width: 50px;
+        }
+
+        .panel-title a:hover, .panel-title a {
+            text-decoration: none !important;
         }
 
 
@@ -108,6 +120,7 @@
 
         img {
             height: 160px;
+            min-height: 160px;
         }
 
         #speakersCarousel {
@@ -132,10 +145,10 @@
 
                         <h1>Event Title........</h1>
                         <p>
-                           Event content......
+                            Join us at Fuji Xerox DocuWorld at our new Customer Value Innovation Hub (CVIH), Fuji Xerox Towers to hear from industry experts and learn from Fuji Xerox subject matter experts how to use the latest technologies and innovations to address your business challenges.
                         </p>
                         <p>
-                            Updating.....................
+                            Beyond insights by industry experts, visit our Innovation Office, catch our Fuji Xerox solutions and services demos, collect lucky gifts to fill up your fukubukuro, win attractive prizes hourly from 12pm to 4pm daily and enjoy exhilarating Taiko Drum performance.
 
                         </p>
 
@@ -146,10 +159,10 @@
                     </section>
                     <section id="spearker-list">
                         <h2>Featured Speakers</h2>
-                        <div id="speakersCarousel" class="carousel slide">
+                        <div id="speakersCarousel" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
 
-                                <li data-target="#speakersCarousel" data-slide-to="0"></li>
+                                <li data-target="#speakersCarousel" data-slide-to="0" class="active"></li>
 
                                 <li data-target="#speakersCarousel" data-slide-to="1"></li>
 
@@ -165,43 +178,43 @@
                                             <a href="#speaker-188" data-toggle="modal">
                                                 <img src="1.png" alt="Mr. Michael Chong">
 
-                                                <h3>Mr. Number 1</h3>
+                                                <h3>Mr. Michael Chong</h3>
 
                                                 <p class="qualifications">
 
-													Manager
+                                                    General Manager, Innovation Office
                                                     <br>
-                                                    <em>ABC</em>
+                                                    <em>Fuji Xerox Co., Ltd.</em>
                                                 </p>
                                             </a>
                                         </li>
 
                                         <li class="span4">
                                             <a href="#speaker-189" data-toggle="modal">
-                                                <img src="1.png" alt="Mr. Eugene Seah">
+                                                <img src="/1.png" alt="Mr. Eugene Seah">
 
-                                                 <h3>Mr. Number 2</h3>
+                                                <h3>Mr. Eugene Seah</h3>
 
                                                 <p class="qualifications">
 
-													Manager
+                                                    Country Head &amp; City Executive, Singapore
                                                     <br>
-                                                    <em>ABC</em>
+                                                    <em>Arcadis</em>
                                                 </p>
                                             </a>
                                         </li>
 
                                         <li class="span4">
                                             <a href="#speaker-190" data-toggle="modal">
-                                                <img src="1.png" alt="Mr. Leon O�Reilly">
+                                                <img src="/1.png" alt="Mr. Leon O�Reilly">
 
-                                                 <h3>Mr. Number 3</h3>
+                                                <h3>Mr. Leon O�Reilly</h3>
 
                                                 <p class="qualifications">
 
-													Manager
+                                                    General Manager, Solution Business
                                                     <br>
-                                                    <em>ABC</em>
+                                                    <em>Fuji Xerox Asia Pacific</em>
                                                 </p>
                                             </a>
                                         </li>
@@ -216,13 +229,13 @@
                                             <a href="#speaker-191" data-toggle="modal">
                                                 <img src="2.png" alt="Mr Kimmo Kolari">
 
-                                                <h3>Mr. Number 4</h3>
+                                                <h3>Mr Kimmo Kolari</h3>
 
                                                 <p class="qualifications">
 
-													Manager
+                                                    Head of Communication and Marketing Services, APAC
                                                     <br>
-                                                    <em>ABC</em>
+                                                    <em>Fuji Xerox Global Services</em>
                                                 </p>
                                             </a>
                                         </li>
@@ -231,13 +244,13 @@
                                             <a href="#speaker-192" data-toggle="modal">
                                                 <img src="2.png" alt="Mr. Janne Kalervo Livonen">
 
-                                                 <h3>Mr. Number 5</h3>
+                                                <h3>Mr. Janne Kalervo Livonen</h3>
 
                                                 <p class="qualifications">
 
-													Manager
+                                                    Regional Principal, Asia Pacific
                                                     <br>
-                                                    <em>ABC</em>
+                                                    <em>Fuji Xerox Global Services </em>
                                                 </p>
                                             </a>
                                         </li>
@@ -246,13 +259,13 @@
                                             <a href="#speaker-193" data-toggle="modal">
                                                 <img src="2.png" alt="Mr. Enda Kavanagh">
 
-                                                <h3>Mr. Number 6</h3>
+                                                <h3>Mr. Enda Kavanagh</h3>
 
                                                 <p class="qualifications">
 
-													Manager
+                                                    Regional Sales Manager
                                                     <br>
-                                                    <em>ABC</em>
+                                                    <em>XMPie Inc.</em>
                                                 </p>
                                             </a>
                                         </li>
@@ -260,20 +273,20 @@
                                     </ul>
                                 </li>
 
-                                <li class="item active">
+                                <li class="item">
                                     <ul class="row-fluid speakersList">
 
                                         <li class="span4">
                                             <a href="#speaker-194" data-toggle="modal">
                                                 <img src="3.png" alt="Mr. Tim Howard">
-												
-												<h3>Mr. Number 7</h3>
+
+                                                <h3>Mr. Tim Howard</h3>
 
                                                 <p class="qualifications">
 
-													Manager
+                                                    Senior Marketing Manager
                                                     <br>
-                                                    <em>ABC</em>
+                                                    <em>Fuji Xerox Asia Pacific</em>
                                                 </p>
                                             </a>
                                         </li>
@@ -368,8 +381,8 @@
                                                     <td>
                                                         Creating Tomorrow�s Intelligent Systems. Together, Today.
 
-                                                        Speaker: Mr. ABC, ABC
-                                                        Where: 200B3
+                                                        Speaker: Mr. Michael Chong General Manager, Innovation Office - Fuji Xerox Co., Ltd
+                                                        Where: Chester Carlson
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -429,6 +442,21 @@
                         </div>
                     </section>
 
+
+                </div>
+                <div class="col-md-4">
+                    <h2>Contact Us</h2>
+                    <ul>
+                        <li>
+                            <span class="name">DEF</span>
+                            <br />
+                            <span class="position">Manager</span>
+                            <br />
+                            <span class="email"><a href="mailto:abc@eiu.edu.vn">abc@eiu.edu.vn</a></span>
+                            <br />
+                            <span class="phone">08xxxxxxx</span>
+                        </li>
+                    </ul>
 
                 </div>
             </article>
