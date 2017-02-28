@@ -1,4 +1,6 @@
-
+@{
+    Layout = null;
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +11,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript">
+        function async_load() {
+            var height = sessionStorage.getItem("height");
+            window.setTimeout(function () {
+                if (height) {
+                    $(document).scrollTop(height);
+                }
+            }, 250);
+
+        }
+        if (window.addEventListener) window.addEventListener('DOMContentLoaded', async_load, false);
+        else if (window.attachEvent) window.attachEvent('onload', async_load);
         $(function () {
             // get hash value
             $.fn.goTo = function () {
@@ -17,19 +30,41 @@
                 }, 'slow');
                 return this;
             }
-            function async_load() {
-                //var hash = window.location.hash;
-                //$(hash).goTo();
-                //$('.carousel').carousel({
-                //    interval: 2000
-                //})
-            }
-            if (window.addEventListener) window.addEventListener('DOMContentLoaded', async_load, false);
-            else if (window.attachEvent) window.attachEvent('onload', async_load);
             $(".nav-tabs li").click(function (event) {
                 var href = $(event.target).attr("href");
                 $(href).goTo();
             })
+
+            $('#agenda-table').on('show.bs.collapse', function () {
+                sessionStorage.setItem("agenda", "1");
+            })
+            $('#agenda-table').on('hide.bs.collapse', function () {
+                sessionStorage.setItem("agenda", "0");
+            })
+            $('#speakers-table').on('show.bs.collapse', function () {
+                sessionStorage.setItem("speakers", "1");
+            })
+            $('#speakers-table').on('hide.bs.collapse', function () {
+                sessionStorage.setItem("speakers", "0");
+            })
+
+
+            if (sessionStorage.getItem("agenda") == "1") {
+                $("#agenda-table").collapse('show')
+            }
+            if (sessionStorage.getItem("speakers") == "1") {
+                $("#speakers-table").collapse('show')
+            }
+
+            $(document).scroll(function () {
+                sessionStorage.setItem("height", $(document).scrollTop());
+
+            })
+          
+            
+            
+
+
         });
 
     </script>
@@ -90,7 +125,7 @@
             padding: 0;
         }
 
-            /*#spearker-list .carousel-inner > li:not(.active) img {
+        /*#spearker-list .carousel-inner > li:not(.active) img {
                 display: none;
             }*/
 
@@ -153,7 +188,7 @@
                         </p>
 
                         <a href="/media/media/FX_DCW16_A4_DB_copy.pdf" target="_blank">
-                            <img src="http://www.uniwallpaper.com/static/images/creativity_water_spray_drops_flower_rose_desktop_images_lvihH4q.jpg" border="0" width="600">
+                            <img src="/dadad.jpg" border="0" width="600">
                         </a>
 
                     </section>
