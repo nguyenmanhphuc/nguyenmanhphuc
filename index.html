@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+@{
+    Layout = null;
+}<!DOCTYPE html>
 <html>
 <head>
     <link href="/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
@@ -79,7 +81,7 @@
         }
 
         th {
-            background-color: #934188;
+            background-color: rgb(149, 198, 238);
             line-height: 12px;
             padding: 10px;
         }
@@ -125,6 +127,28 @@
         /*#spearker-list .carousel-inner > li:not(.active) img {
                 display: none;
             }*/
+        body {
+            color: rgb(51,51,51);
+        }
+
+        h1, h2, h3, .name {
+            font-weight: bold;
+        }
+
+        .email, .phone {
+            font-style: italic;
+        }
+
+        .label {
+            color: rgb(51,51,51);
+            font-size: 100%;
+            font-weight: bold;
+        }
+
+
+        #speakers-table .topic, #speakers-table .topic .label {
+            color: goldenrod;
+        }
 
         #spearker-list .carousel-control {
             font-size: 90px;
@@ -159,6 +183,17 @@
             padding: 0 50px;
             margin: 0;
         }
+
+            #speakersCarousel .carousel-indicators li {
+                background-color: #ccc;
+            }
+
+                #speakersCarousel li.active {
+                    background-color: rgb(51,51,51);
+                }
+            #speakersCarousel .glyphicon-chevron-left, #speakersCarousel .glyphicon-chevron-rigt{
+                color:rgb(41,41,51);
+            }
     </style>
 </head>
 <body>
@@ -190,7 +225,7 @@
                     <section id="spearker-list">
                         <h2>Featured Speakers</h2>
                         <div id="speakersCarousel" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
+                            <ol class="carousel-indicators ">
 
                                 <li data-target="#speakersCarousel" data-slide-to="0" class="active"></li>
 
@@ -264,7 +299,7 @@
                                                 <p class="qualifications">
 
                                                     Position
-                                                    <br>
+                                                    <br />
                                                     <em>ABC</em>
                                                 </p>
                                             </a>
@@ -325,8 +360,8 @@
                                 </li>
 
                             </ul>
-                            <a class="carousel-control left" href="#speakersCarousel" data-slide="prev"><span class="glyphicon-chevron-left"></span></a>
-                            <a class="carousel-control right" href="#speakersCarousel" data-slide="next"><span class="glyphicon-chevron-left"></span></a>
+                            <a class="carousel-control left" href="#speakersCarousel" data-slide="prev">‹</a>
+                            <a class="carousel-control right" href="#speakersCarousel" data-slide="next">›</a>
                         </div>
                     </section>
                     <section class="articleSection">
@@ -370,8 +405,8 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a data-toggle="collapse" href="#agenda-table" style="display:block" class="collapsed">
-                                            Event Agenda
+                                        <a data-toggle="collapse" href="#agenda-table" style="display:block; font-weight:bold" class="collapsed">
+                                            EVENT AGENDA
                                             <b class="caret"></b>
                                         </a>
                                     </h4>
@@ -384,7 +419,7 @@
                                 <div class="agenda-controls">
                                     <ul>
                                         <li class="active">
-                                            <a class="btn btn-default" href="#agenda_day1" data-toggle="tab">
+                                            <a class="btn btn-default" href="#agenda_day1" data-toggle="tab" style="font-weight:bold; color:white">
                                                 Day 1
                                             </a>
                                         </li>
@@ -392,7 +427,7 @@
                                 </div>
                                 <div class="tab-content">
                                     <div class="tab-pane collapse active" id="agenda_day1">
-                                        <table class="agenda-detail">
+                                        <table class="agenda-detail" style="width:100%">
                                             <caption>
                                             </caption>
                                             <thead>
@@ -409,10 +444,23 @@
                                                 <tr>
                                                     <td>08:30</td>
                                                     <td>
-                                                        Creating Tomorrow’s Intelligent Systems. Together, Today.
-
-                                                        Speaker: DFE
-                                                        Where: ABC
+                                                        <span class="topic">
+                                                            <span class="label">
+                                                                Creating Tomorrow’s Intelligent Systems. Together, Today.
+                                                            </span>
+                                                        </span>
+                                                        <br />
+                                                        <span class="speaker">
+                                                            <span class="label">
+                                                                Speaker
+                                                            </span>: DFE
+                                                        </span>
+                                                        <br />
+                                                        <span class="location">
+                                                            <span class="label">
+                                                                Where
+                                                            </span>: ROOM 200B3
+                                                        </span>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -429,8 +477,8 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a data-toggle="collapse" href="#speakers-table" style="display:block" class="collapsed">
-                                            Speaker & Seminars
+                                        <a data-toggle="collapse" href="#speakers-table" style="display:block; font-weight:bold" class="collapsed">
+                                            SPEAKERS AND SEMINARS
                                             <b class="caret"></b>
                                         </a>
                                     </h4>
@@ -446,19 +494,19 @@
                                         <tr>
                                             <td>
                                                 <span class="topic">
-                                                    <span class="label-info">
+                                                    <span class="label ">
                                                         Topic
                                                     </span>: Agitation
                                                 </span>
                                                 <br />
                                                 <span class="speaker">
-                                                    <span class="label-info">
+                                                    <span class="label">
                                                         Speaker
                                                     </span>: MTGF- General Manager,  Business
                                                 </span>
                                                 <br />
                                                 <span class="Synopsis">
-                                                    <span class="label-info">
+                                                    <span class="label">
                                                         Synopsis
                                                     </span>: Learn how you can utilize design thinking to gain insight on undiscovered or unmet needs – bringing new and different values to the market and customers in this changing market.
                                                 </span>
