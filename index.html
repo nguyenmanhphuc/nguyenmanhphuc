@@ -1,6 +1,4 @@
-@{
-    Layout = null;
-}<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <link href="/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
@@ -9,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="/css/site.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         function async_load() {
             var height = sessionStorage.getItem("height");
@@ -61,155 +60,39 @@
             })
 
 
-
-
-
         });
+        function initMap() {
+            var uluru = { lat: 11.056449, lng: 106.684124 };
+            var map = new google.maps.Map(document.getElementById('google-map'), {
+                zoom: 13,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
 
     </script>
-    <style>
-        section {
-            margin-top: 20px;
-        }
-
-        li {
-            list-style-type: none;
-        }
-
-        #agenda li.active a {
-            background-color: orange;
-        }
-
-        th {
-            background-color: rgb(149, 198, 238);
-            line-height: 12px;
-            padding: 10px;
-        }
-
-        tbody tr td {
-            border-bottom: 1px solid gray;
-        }
-
-        td {
-            padding: 10px;
-        }
-
-        .agenda-detail td:first-child {
-            width: 100px;
-        }
-
-        a.collapsed > .caret {
-            border-left: 8px solid #000000;
-            border-right: 0;
-            border-top: 8px solid transparent;
-            border-bottom: 8px solid transparent;
-            /*top: 12px;*/
-        }
-
-        .caret {
-            border-width: 8px;
-            border-top-color: #000000;
-            position: absolute;
-            right: 30px;
-            /*top: 16px;*/
-        }
-
-        #speakers-table table td {
-            width: auto;
-        }
-
-
-        #spearker-list .carousel-inner {
-            height: 330px;
-            padding: 0;
-        }
-
-        /*#spearker-list .carousel-inner > li:not(.active) img {
-                display: none;
-            }*/
-        body {
-            color: rgb(51,51,51);
-        }
-
-        h1, h2, h3, .name {
-            font-weight: bold;
-        }
-
-        .email, .phone {
-            font-style: italic;
-        }
-
-        .label {
-            color: rgb(51,51,51);
-            font-size: 100%;
-            font-weight: bold;
-        }
-
-
-        #speakers-table .topic, #speakers-table .topic .label {
-            color: goldenrod;
-        }
-
-        #spearker-list .carousel-control {
-            font-size: 90px;
-            top: 30px;
-            background-color: white;
-            background-image: none;
-            width: 50px;
-        }
-
-        .panel-title a:hover, .panel-title a {
-            text-decoration: none !important;
-        }
-
-
-        .panel-body {
-            padding: 0px;
-        }
-
-        .span4 {
-            display: block;
-            width: 31%;
-            float: left;
-            margin-top: 10px;
-        }
-
-        img {
-            height: 160px;
-            min-height: 160px;
-        }
-
-        #speakersCarousel {
-            padding: 0 50px;
-            margin: 0;
-        }
-
-            #speakersCarousel .carousel-indicators li {
-                background-color: #ccc;
-            }
-
-                #speakersCarousel li.active {
-                    background-color: rgb(51,51,51);
-                }
-            #speakersCarousel .glyphicon-chevron-left, #speakersCarousel .glyphicon-chevron-rigt{
-                color:rgb(41,41,51);
-            }
-    </style>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjDGDoXsPNl8lryfE1fDIDCKfDrJizjjw&callback=initMap">
+    </script>
 </head>
 <body>
-    <div class="container">
-        <img src="/test.jpg" style="width:100%" />
+    <div class="container" style="max-width:1850px">
+        <img src="~/images/logo.png" id="logo" />
+        <img src="/test.jpg" style="width:100%; height:auto" />
         <ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a href="#Home">Home</a></li>
+            <li role="presentation"><a href="#home">HOME</a></li>
             <li role="presentation"><a href="#agenda">AGENDA</a></li>
-            <li role="presentation"><a href="#speakers">SPEAKERS</a></li>
+            <li role="presentation"><a href="#panel">PANEL</a></li>
+            <li role="presentation"><a href="#venue">VENUE</a></li>
+            <li role="presentation"><a href="#media">MEDIA</a></li>
         </ul>
         <div class="body-content">
             <article>
                 <div class="col-md-8">
-                    <section id="Home">
-
-
+                    <section id="home">
                         <h1>Event Title........</h1>
                         <p>
                             First paragraph.....
@@ -217,12 +100,12 @@
                             The second paragraph.....
                         </p>
 
-                        <a href="/media/media/FX_DCW16_A4_DB_copy.pdf" target="_blank">
-                            <img src="/dadad.jpg" border="0" width="600">
-                        </a>
+                        @*<a href="/media/media/FX_DCW16_A4_DB_copy.pdf" target="_blank">
+                                <img src="/dadad.jpg" border="0" width="600">
+                            </a>*@
 
                     </section>
-                    <section id="spearker-list">
+                    <section id="panel">
                         <h2>Featured Speakers</h2>
                         <div id="speakersCarousel" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators ">
@@ -241,7 +124,7 @@
 
                                         <li class="span4">
                                             <a href="#speaker-188" data-toggle="modal">
-                                                <img src="1.png" alt="Mr. 1">
+                                                <img src="/images/1.png" alt="Mr. 1">
 
                                                 <h3>Mr. 1</h3>
 
@@ -256,7 +139,7 @@
 
                                         <li class="span4">
                                             <a href="#speaker-189" data-toggle="modal">
-                                                <img src="/1.png" alt="Mr. 2">
+                                                <img src="/images/1.png" alt="Mr. 2">
 
                                                 <h3>Mr. 2</h3>
 
@@ -271,12 +154,9 @@
 
                                         <li class="span4">
                                             <a href="#speaker-190" data-toggle="modal">
-                                                <img src="/1.png" alt="Mr. Leon O’Reilly">
-
+                                                <img src="/images/1.png" alt="Mr. Leon O’Reilly">
                                                 <h3>Mr. 3</h3>
-
                                                 <p class="qualifications">
-
                                                     Position
                                                     <br>
                                                     <em>ABC</em>
@@ -292,7 +172,7 @@
 
                                         <li class="span4">
                                             <a href="#speaker-191" data-toggle="modal">
-                                                <img src="2.png" alt="Mr Kimmo Kolari">
+                                                <img src="/images/2.png" alt="Mr Kimmo Kolari">
 
                                                 <h3>Mr 4</h3>
 
@@ -307,7 +187,7 @@
 
                                         <li class="span4">
                                             <a href="#speaker-192" data-toggle="modal">
-                                                <img src="2.png" alt="Mr. Janne Kalervo Livonen">
+                                                <img src="/images/2.png" alt="Mr. Janne Kalervo Livonen">
 
                                                 <h3>Mr. 5</h3>
 
@@ -322,7 +202,7 @@
 
                                         <li class="span4">
                                             <a href="#speaker-193" data-toggle="modal">
-                                                <img src="2.png" alt="Mr. Enda Kavanagh">
+                                                <img src="/images/2.png" alt="Mr. Enda Kavanagh">
 
                                                 <h3>Mr. 6</h3>
 
@@ -343,7 +223,7 @@
 
                                         <li class="span4">
                                             <a href="#speaker-194" data-toggle="modal">
-                                                <img src="3.png" alt="Mr. Tim Howard">
+                                                <img src="/images/3.png" alt="Mr. Tim Howard">
 
                                                 <h3>Mr. 7</h3>
 
@@ -364,67 +244,32 @@
                             <a class="carousel-control right" href="#speakersCarousel" data-slide="next">›</a>
                         </div>
                     </section>
-                    <section class="articleSection">
-                        <h2>Who Will Be Attending</h2>
-                        <p>This event attracts the following job functions:</p>
-
-                        <div class="row">
-
-                            <div class="span4">
-                                <ul>
-
-                                    <li>C-level (CEO / CFO / COO / CIO / CMO)</li>
-
-                                    <li>Marketing</li>
-
-                                    <li>Information Technology</li>
-
-                                    <li>Finance Management </li>
-
-                                </ul>
-                            </div>
-
-                            <div class="span4">
-                                <ul>
-
-                                    <li>Operations and Business Process </li>
-
-                                    <li>Procurement</li>
-
-                                    <li>Business Owners</li>
-
-                                    <li>Entrepreneurs</li>
-
-                                </ul>
-                            </div>
-
-                        </div>
-                    </section>
                     <section id="agenda">
+                        <h2> EVENT AGENDA</h2>
                         <div class="panel-group">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" href="#agenda-table" style="display:block; font-weight:bold" class="collapsed">
-                                            EVENT AGENDA
-                                            <b class="caret"></b>
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div class="panel-collapse collapse">
+                            @*<div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" href="#agenda-table" style="display:block; font-weight:bold" class="collapsed">
 
-                                </div>
-                            </div>
-                            <div class="panel panel-body panel-collapse collapse" id="agenda-table">
-                                <div class="agenda-controls">
-                                    <ul>
-                                        <li class="active">
-                                            <a class="btn btn-default" href="#agenda_day1" data-toggle="tab" style="font-weight:bold; color:white">
-                                                Day 1
+                                                <b class="caret"></b>
                                             </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                        </h4>
+                                    </div>
+                                    <div class="panel-collapse collapse">
+
+                                    </div>
+                                </div>*@
+                            <div class="panel panel-body panel-collapse collapse" id="agenda-table">
+                                @*<div class="agenda-controls">
+                                        <ul>
+                                            <li class="active">
+                                                <a class="btn btn-default" href="#agenda_day1" data-toggle="tab" style="font-weight:bold; color:white">
+                                                    Day 1
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>*@
                                 <div class="tab-content">
                                     <div class="tab-pane collapse active" id="agenda_day1">
                                         <table class="agenda-detail" style="width:100%">
@@ -469,74 +314,102 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </section>
-                    <section id="speakers">
-                        <div class="panel-group">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" href="#speakers-table" style="display:block; font-weight:bold" class="collapsed">
-                                            SPEAKERS AND SEMINARS
-                                            <b class="caret"></b>
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div class="panel-collapse collapse">
-
-                                </div>
-                            </div>
-                            <div class="panel panel-body panel-collapse collapse" id="speakers-table">
-                                <table>
-
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <span class="topic">
-                                                    <span class="label ">
-                                                        Topic
-                                                    </span>: Agitation
-                                                </span>
-                                                <br />
-                                                <span class="speaker">
-                                                    <span class="label">
-                                                        Speaker
-                                                    </span>: MTGF- General Manager,  Business
-                                                </span>
-                                                <br />
-                                                <span class="Synopsis">
-                                                    <span class="label">
-                                                        Synopsis
-                                                    </span>: Learn how you can utilize design thinking to gain insight on undiscovered or unmet needs – bringing new and different values to the market and customers in this changing market.
-                                                </span>
-                                                <br />
-
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                    <section id="media">
+                        <h2>Media</h2>
+                        <div>
+                            <img class="thumbnail" src="/images/20160806_110530.jpg" />
+                            <img class="thumbnail" src="/images/20160806_110624.jpg" />
+                            <img class="thumbnail" src="/images/20160806_110631.jpg" />
+                            <img class="thumbnail" src="/images/20160806_113623.jpg" />
+                            <img class="thumbnail" src="/images/20160806_113624.jpg" />
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/nvrvq5wdMmU" frameborder="0" allowfullscreen></iframe>
                         </div>
                     </section>
-                </div>
-                <div class="col-md-4">
-                    <h2>Contact Us</h2>
-                    <ul>
-                        <li>
-                            <span class="name">DEF</span>
-                            <br />
-                            <span class="position">Manager</span>
-                            <br />
-                            <span class="email"><a href="mailto:abc@eiu.edu.vn">abc@eiu.edu.vn</a></span>
-                            <br />
-                            <span class="phone">08xxxxxxx</span>
-                        </li>
-                    </ul>
 
                 </div>
+
+                <div class="col-md-4">
+                    <section id="venue">
+                        <h2>Venue details</h2>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td style="width:80px">
+                                        Date:
+                                    </td>
+                                    <td>22 April 2017</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Time:
+                                    </td>
+                                    <td>9am - 1pm</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Location:
+                                    </td>
+                                    <td>Becamex Hospital</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Getting there</h2>
+                        <div id="google-map">
+
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Contact Us</h2>
+                        <ul>
+                            <li>
+                                <span class="name">ABC</span>
+                                <br />
+                                <span class="position">Manager, Corporate Communications & Marketing</span>
+                                <br />
+                                <span class="email"><a href="mailto:abc@eiu.edu.vn">abc@eiu.edu.vn</a></span>
+                                <br />
+                                <span class="phone">+84 909 909 909 </span>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
             </article>
+
+            <br />
+
         </div>
+
+
     </div>
+    <footer>
+
+        <div class="container" style="bottom:30px">
+            <hr />
+            <div style="font-weight:bold; font-size:16pt">
+                EASTERN INTERNATIONAL UNIVERISTY
+            </div>
+            <div>
+                Nam Ky Khoi Nghia street, Hoa Phu ward, Thu Dau Mot City, Binh Duong Province<br />
+                <table id="contact">
+                    <tr>
+                        <td>Telephone:</td>
+                        <td>(+84 650) 222 0341</td>
+                    </tr>
+                    <tr>
+                        <td>Fax:</td>
+                        <td>(+84 650) 222 0313</td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td><a href="mailto:eventinfo@eiu.edu.vn">eventinfo@eiu.edu.vn</a></td>
+                    </tr>
+                </table>
+                Copyright @@ 2011-2017 EIU. All right reserved.
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
