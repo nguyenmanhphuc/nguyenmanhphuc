@@ -1,0 +1,197 @@
+﻿@font-face {
+    font-family: 'Myriad';
+    src: url('/fonts/MyriadPro-Regular.otf');
+}
+
+.container {
+    width: 1400px;
+}
+
+body {
+    font-family: Myriad;
+}
+
+
+section {
+    margin-top: 20px;
+}
+
+li {
+    list-style-type: none;
+}
+
+#agenda li.active a {
+    background-color: orange;
+}
+
+th {
+    background-color: rgb(149, 198, 238);
+    line-height: 12px;
+    padding: 10px;
+}
+
+#agenda td {
+    padding: 10px;
+}
+
+#agenda tr:not(:last-child) td {
+    border-bottom: 1px solid gray;
+}
+
+#google-map {
+    width: 100%;
+    height: 400px;
+    background-color: grey;
+}
+
+.agenda-detail td:first-child {
+    width: 100px;
+}
+
+a.collapsed > .caret {
+    border-left: 8px solid #000000;
+    border-right: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    /*top: 12px;*/
+}
+
+.caret {
+    border-width: 8px;
+    border-top-color: #000000;
+    position: absolute;
+    right: 30px;
+    /*top: 16px;*/
+}
+
+#speakers-table table td {
+    width: auto;
+}
+
+
+#panel .carousel-inner {
+    height: 330px;
+    padding: 0;
+}
+
+body {
+    color: #000000;
+    font-size: 12pt;
+}
+
+h1, h2, .name {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #df8749;
+}
+
+.email, .phone {
+    font-style: italic;
+}
+
+.label {
+    color: rgb(51,51,51);
+    font-size: 100%;
+    font-weight: bold;
+}
+
+
+#speakers-table .topic, #speakers-table .topic .label {
+    color: goldenrod;
+}
+
+#panel .carousel-control {
+    font-size: 90px;
+    top: 30px;
+    background-color: white;
+    background-image: none;
+    width: 50px;
+    margin-top: 100px;
+}
+
+.panel-title a:hover, .panel-title a {
+    text-decoration: none !important;
+}
+
+
+.panel-body {
+    padding: 0px;
+}
+
+.span4 {
+    display: block;
+    width: 31%;
+    float: left;
+    margin-top: 10px;
+}
+
+#panel img {
+    height: 160px;
+    min-height: 160px;
+}
+
+#speakersCarousel {
+    padding: 0 50px;
+    margin: 0;
+}
+
+    #speakersCarousel .carousel-indicators li {
+        background-color: #ccc;
+    }
+
+    #speakersCarousel li.active {
+        background-color: rgb(51,51,51);
+    }
+
+    #speakersCarousel .glyphicon-chevron-left, #speakersCarousel .glyphicon-chevron-rigt {
+        color: rgb(41,41,51);
+    }
+
+#logo {
+    min-width: 100px;
+    width: 10%;
+    margin: 5px;
+}
+
+ul {
+    padding-left: 0;
+}
+
+    ul li {
+        margin-bottom: 10px;
+    }
+
+hr {
+    display: block;
+    height: 3px;
+    border: 0;
+    border-top: 5px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+.nav-tabs li {
+    margin: 20px 25px;
+    background-color: #dcaf3c;
+}
+
+    .nav-tabs li a {
+        color: black;
+        font-weight: bold;
+        padding: 6px 15px;
+        font-size: 24px;
+    }
+
+html {
+    height: 100%;
+}
+
+footer {
+    margin: 20px 0;
+}
+
+.thumbnail {
+    width: 250px;
+    display: inline-block;
+}
