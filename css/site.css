@@ -3,9 +3,21 @@
     src: url('/fonts/MyriadPro-Regular.otf');
 }
 
-.container {
-    width: 1400px;
+
+@media (min-width: 1500px) {
+    .container {
+        width: 1470px;
+    }
 }
+
+@media (min-width: 1900px) {
+    .container {
+        width: 1880px;
+    }
+}
+
+
+
 
 body {
     font-family: Myriad;
@@ -70,7 +82,7 @@ a.collapsed > .caret {
 
 
 #panel .carousel-inner {
-    height: 330px;
+    min-height: 330px;
     padding: 0;
 }
 
@@ -79,7 +91,7 @@ body {
     font-size: 12pt;
 }
 
-h1, h2, .name {
+h1, h2 {
     font-weight: bold;
     text-transform: uppercase;
     font-weight: bold;
@@ -107,7 +119,11 @@ h1, h2, .name {
     background-color: white;
     background-image: none;
     width: 50px;
-    margin-top: 100px;
+    margin-top: 80px;
+}
+
+#panel .carousel-control {
+    color: black;
 }
 
 .panel-title a:hover, .panel-title a {
@@ -119,21 +135,32 @@ h1, h2, .name {
     padding: 0px;
 }
 
-.span4 {
+
+#panel img {
+    height: auto;
+    width: 100%;
+}
+
+#panel .span4 {
     display: block;
-    width: 31%;
+    width: 33.3%;
     float: left;
     margin-top: 10px;
 }
 
-#panel img {
-    height: 160px;
-    min-height: 160px;
-}
+    #panel .span4 a {
+        color: black;
+        text-decoration: none !important;
+    }
+
+        #panel .span4 a:hover {
+            color: black;
+            text-decoration: none !important;
+        }
 
 #speakersCarousel {
     padding: 0 50px;
-    margin: 0;
+    margin: 0 10%;
 }
 
     #speakersCarousel .carousel-indicators li {
@@ -180,8 +207,13 @@ hr {
         color: black;
         font-weight: bold;
         padding: 6px 15px;
-        font-size: 24px;
+        font-size: 14pt;
     }
+
+ul.nav-tabs li a:hover {
+    background-color: inherit;
+    border: 1px solid transparent;
+}
 
 html {
     height: 100%;
@@ -189,9 +221,23 @@ html {
 
 footer {
     margin: 20px 0;
+    font-size: 70%;
 }
 
 .thumbnail {
     width: 250px;
     display: inline-block;
+}
+
+#top-banner {
+    width: 100%;
+    max-height: 500px;
+}
+
+.speakersList li {
+    padding: 0 5px;
+}
+
+.name{
+    font-weight:bold;
 }
