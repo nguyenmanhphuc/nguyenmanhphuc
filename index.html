@@ -22,8 +22,9 @@
         $(function () {
             // get hash value
             $.fn.goTo = function () {
+                var top = $(this).offset().top - $(".nav-tabs").outerHeight();
                 $('html, body').animate({
-                    scrollTop: $(this).offset().top + 'px'
+                    scrollTop: top + 'px'
                 }, 'slow');
                 return this;
             }
@@ -32,30 +33,33 @@
                 $(href).goTo();
             })
 
-            $('#agenda-table').on('show.bs.collapse', function () {
-                sessionStorage.setItem("agenda", "1");
-            })
-            $('#agenda-table').on('hide.bs.collapse', function () {
-                sessionStorage.setItem("agenda", "0");
-            })
-            $('#speakers-table').on('show.bs.collapse', function () {
-                sessionStorage.setItem("speakers", "1");
-            })
-            $('#speakers-table').on('hide.bs.collapse', function () {
-                sessionStorage.setItem("speakers", "0");
-            })
-
-
-            if (sessionStorage.getItem("agenda") == "1") {
-                $("#agenda-table").collapse('show')
-            }
-            if (sessionStorage.getItem("speakers") == "1") {
-                $("#speakers-table").collapse('show')
-            }
 
             $(document).scroll(function () {
-                sessionStorage.setItem("height", $(document).scrollTop());
-            })
+                if ($(".nav-tabs").hasClass("fixed")) {
+                    var bannerBottom = $("#top-banner").offset().top + $("#top-banner").height();
+                    var documentTop = $(document).scrollTop();
+                    if (bannerBottom > documentTop) {
+                        $(".nav-tabs").removeClass("fixed");
+                    }
+                } else {
+                    var top = $(".nav-tabs").offset().top;
+                    var documentTop = $(document).scrollTop();
+                    if (top <= documentTop) {
+                        $("#topnav").css("min-height", $(".nav-tabs").outerHeight());
+                        $(".nav-tabs").addClass("fixed");
+                    }
+                }
+
+            });
+
+            $("#images-group #images-carousel").on('slid.bs.carousel', function (e) {
+                $("#images-group .carousel-indicators div").removeClass("active");
+                var images = $("#images-carousel li");
+                console.log(images.index($("#images-carousel li.active")));
+                var index = (images.index($("#images-carousel li.active"))) % images.length;
+                var indicator = $("#images-group .carousel-indicators div").eq(index).addClass("active");
+            });
+
 
         });
         function initMap() {
@@ -79,13 +83,17 @@
     <div class="container">
         <img src="/images/logo.png" id="logo" />
         <img src="/images/top-banner.jpg" style="width:100%; height:auto" id="top-banner" />
-        <ul class="nav nav-tabs">
-            <li role="presentation"><a href="#home">HOME</a></li>
-            <li role="presentation"><a href="#agenda">AGENDA</a></li>
-            <li role="presentation"><a href="#panel">PANEL</a></li>
-            <li role="presentation"><a href="#venue">VENUE</a></li>
-            <li role="presentation"><a href="#media">MEDIA</a></li>
-        </ul>
+        <div id="topnav" style="width:inherit">
+            <ul class="nav nav-tabs" style="width:inherit">
+                <li role="presentation"><a href="#home">HOME</a></li>
+                <li role="presentation"><a href="#agenda">AGENDA</a></li>
+                <li role="presentation"><a href="#panel">PANEL</a></li>
+                <li role="presentation"><a href="#venue">VENUE</a></li>
+                <li role="presentation"><a href="#media">MEDIA</a></li>
+            </ul>
+        </div>
+
+
         <div class="body-content">
             <article>
                 <div class="col-md-8">
@@ -99,7 +107,6 @@
                         <p>
                             This seminar will feature experts in procurement from academia and industry to share their views and perspectives. The seminar format includes a keynote address followed by a panel discussion.
                         </p>
-
                         <div id="attendee " class="sub-section">
                             <div class="title">Who Will Be Attending?</div>
                             <div class="content">
@@ -163,7 +170,73 @@
                     </section>
                     <section id="panel">
                         <h2>Featured Speakers and panelist</h2>
-                        <div id="speakersCarousel" class="carousel slide" data-ride="carousel">
+                        <table id="speakers-table">
+                            <tr>
+                                <td>
+                                    <div class="avatar">
+                                        <img src="/images/1.png" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <b>
+                                        Professor Leland Buddress
+
+                                    </b>, PhD, CPM
+                                    <br />
+                                    Title
+                                    <br />        Company
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="avatar">
+                                        <img src="/images/2.png" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <b>
+                                        Mr GOH
+
+                                    </b>
+                                    <br />
+                                    Managing Director
+                                    <br />        NSO
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="avatar">
+                                        <img src="/images/3.png" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <b>
+                                        Ms DAO
+
+                                    </b>
+                                    <br />
+                                    Co-owner
+                                    <br />        Tekcom
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="avatar">
+                                        <img src="/images/1.png" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <b>
+                                        Mr Le Vinh Quang
+
+                                    </b>, MSc
+                                    <br />
+                                    Director
+                                    <br />        Eastern International University (EIU)
+                                </td>
+                            </tr>
+                        </table>
+                        <!---<div id="speakersCarousel" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators ">
 
                                 <li data-target="#speakersCarousel" data-slide-to="0" class="active"></li>
@@ -298,7 +371,7 @@
                             </ul>
                             <a class="carousel-control left" href="#speakersCarousel" data-slide="prev">‹</a>
                             <a class="carousel-control right" href="#speakersCarousel" data-slide="next">›</a>
-                        </div>
+                        </div>-->
                     </section>
                     <section id="agenda">
                         <h2> EVENT AGENDA</h2>
@@ -355,7 +428,7 @@
                                                     <td>09:05 - 10:30</td>
                                                     <td>
                                                         Siminar: Application of best procurement practices in Vietnam<br />
-                                                        by Professor Leland Buddress
+                                                        by Professor Leland Buddress    
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -381,14 +454,51 @@
                     <section id="media">
                         <h2>Media</h2>
                         <div id="images-group">
-                            <img class="thumbnail" src="/images/20160806_110530.jpg" />
-                            <img class="thumbnail" src="/images/20160806_110624.jpg" />
-                            <img class="thumbnail" src="/images/20160806_110631.jpg" />
-                            <img class="thumbnail" src="/images/20160806_113623.jpg" />
-                            <img class="thumbnail" src="/images/20160806_113624.jpg" />
+                            <div id="images-carousel" class="carousel slide" data-ride="carousel">
+
+                                <ul class="unstyled carousel-inner">
+
+                                    <li class="item active">
+                                        <img src="/upload/1.jpg" />
+                                    </li>
+                                    <li class="item ">
+                                        <img src="/upload/2.jpg" />
+                                    </li>
+                                    <li class="item">
+                                        <img src="/upload/3.jpg" />
+                                    </li>
+                                    <li class="item">
+                                        <img src="/upload/4.jpg" />
+                                    </li>
+                                    <li class="item">
+                                        <img src="/upload/5.jpg" />
+                                    </li>
+
+                                </ul>
+                                <a class="carousel-control left" href="#images-carousel" data-slide="prev">‹</a>
+                                <a class="carousel-control right" href="#images-carousel" data-slide="next">›</a>
+
+
+
+                            </div>
+                            <div class="carousel-indicators " style="position:relative; margin:0; left:0">
+
+                                <div data-target="#images-carousel" data-slide-to="0" class="active">
+                                    <img src="/upload/1.jpg" />
+                                </div><div data-target="#images-carousel" data-slide-to="1">
+                                    <img src="/upload/2.jpg" />
+                                </div><div data-target="#images-carousel" data-slide-to="2">
+                                    <img src="/upload/3.jpg" />
+                                </div><div data-target="#images-carousel" data-slide-to="3">
+                                    <img src="/upload/4.jpg" />
+                                </div><div data-target="#images-carousel" data-slide-to="4">
+                                    <img src="/upload/5.jpg" />
+                                </div>
+
+                            </div>
 
                         </div>
-                        <div id="video-group">
+                        <div id="video-group" style="display:block; margin-top:20px">
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/nvrvq5wdMmU" frameborder="0" allowfullscreen></iframe>
                         </div>
                     </section>
@@ -404,7 +514,7 @@
                                     <td style="width:80px">
                                         Date:
                                     </td>
-                                    <td>22 April 2017</td>
+                                    <td>Friday, April 21 2017</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -480,7 +590,7 @@
                         <td><a href="mailto:eventinfo@eiu.edu.vn">eventinfo@eiu.edu.vn</a></td>
                     </tr>
                 </table>
-                Copyright @ 2011-2017 EIU. All right reserved.
+                Copyright @@ 2011-2017 EIU. All right reserved.
             </div>
         </div>
     </footer>
